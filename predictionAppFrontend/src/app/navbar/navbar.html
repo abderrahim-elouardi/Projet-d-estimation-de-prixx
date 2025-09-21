@@ -1,0 +1,33 @@
+<!-- Navbar responsive Bootstrap 5 -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <!-- Brand/Logo -->
+        <a class="navbar-brand">SmartEstimator</a>
+
+        <!-- Bouton burger pour mobile -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" aria-controls="navbarNav"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Menu de navigation -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <!-- Liens de navigation à gauche -->
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" *ngIf="auth.jwtToken!=null" (click)="allerEstimateur()">Estimateur</a>
+                </li>
+            </ul>
+
+            <!-- Boutons d'authentification à droite -->
+            <div class="navbar-nav ms-auto">
+                <!-- Bouton Se connecter (visible quand l'utilisateur n'est PAS connecté) -->
+
+                <div class="nav-link btn btn-outline-primary me-2" (click)="AllerSeConnecter()"
+                    *ngIf="auth.jwtToken==null">Se connecter</div>
+                <a class="nav-link btn btn-outline-danger" (click)="AllerDeconnecter()" *ngIf="auth.jwtToken!=null"
+                    (click)="AllerDeconnecter()">Déconnexion</a>
+            </div>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,495 @@
+<div class="container-fluid py-4">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-8">
+            <div class="text-center mb-4">
+                <h1 class="display-4 text-primary">
+                    <i class="bi bi-house-door"></i>
+                    Estimateur de Prix d'Appartement
+                </h1>
+                <p class="lead text-muted">Remplissez les caractéristiques de votre bien pour obtenir une estimation</p>
+            </div>
+
+            <form id="apartmentForm">
+                <!-- Informations Générales -->
+                <div class="section-header">
+                    <h3><i class="bi bi-info-circle"></i> Informations Générales</h3>
+                </div>
+                <div class="form-section">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label for="MSSubClass" class="form-label">Classe de sous-construction</label>
+                            <input type="number" class="form-control" id="MSSubClass" name="MSSubClass"
+                                [(ngModel)]="appInfo.MSSubClass">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="MSZoning" class="form-label">Zonage</label>
+                            <input type="number" class="form-control" id="MSZoning" name="MSZoning"
+                                [(ngModel)]="appInfo.MSZoning">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="BldgType" class="form-label">Type de bâtiment</label>
+                            <input type="number" class="form-control" id="BldgType" name="BldgType"
+                                [(ngModel)]="appInfo.BldgType">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="HouseStyle" class="form-label">Style de maison</label>
+                            <input type="number" class="form-control" id="HouseStyle" name="HouseStyle"
+                                [(ngModel)]="appInfo.HouseStyle">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="OverallQual" class="form-label">Qualité générale (1-10)</label>
+                            <input type="number" class="form-control" id="OverallQual" name="OverallQual"
+                                [(ngModel)]="appInfo.OverallQual" min="1" max="10">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="OverallCond" class="form-label">Condition générale (1-10)</label>
+                            <input type="number" class="form-control" id="OverallCond" name="OverallCond"
+                                [(ngModel)]="appInfo.OverallCond" min="1" max="10">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Terrain -->
+                <div class="section-header">
+                    <h3><i class="bi bi-geo-alt"></i> Terrain</h3>
+                </div>
+                <div class="form-section">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label for="LotFrontage" class="form-label">Façade du terrain (pieds)</label>
+                            <input type="number" class="form-control" id="LotFrontage" name="LotFrontage"
+                                [(ngModel)]="appInfo.LotFrontage">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="LotArea" class="form-label">Surface du terrain (pieds²)</label>
+                            <input type="number" class="form-control" id="LotArea" name="LotArea"
+                                [(ngModel)]="appInfo.LotArea">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="Street" class="form-label">Type de rue</label>
+                            <input type="number" class="form-control" id="Street" name="Street"
+                                [(ngModel)]="appInfo.Street">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="Alley" class="form-label">Accès allée</label>
+                            <input type="number" class="form-control" id="Alley" name="Alley"
+                                [(ngModel)]="appInfo.Alley">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="LotShape" class="form-label">Forme du terrain</label>
+                            <input type="number" class="form-control" id="LotShape" name="LotShape"
+                                [(ngModel)]="appInfo.LotShape">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="LandContour" class="form-label">Contour du terrain</label>
+                            <input type="number" class="form-control" id="LandContour" name="LandContour"
+                                [(ngModel)]="appInfo.LandContour">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="Utilities" class="form-label">Services publics</label>
+                            <input type="number" class="form-control" id="Utilities" name="Utilities"
+                                [(ngModel)]="appInfo.Utilities">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="LandSlope" class="form-label">Pente du terrain</label>
+                            <input type="number" class="form-control" id="LandSlope" name="LandSlope"
+                                [(ngModel)]="appInfo.LandSlope">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="Neighborhood" class="form-label">Quartier</label>
+                            <input type="number" class="form-control" id="Neighborhood" name="Neighborhood"
+                                [(ngModel)]="appInfo.Neighborhood">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Structure et Construction -->
+                <div class="section-header">
+                    <h3><i class="bi bi-building"></i> Structure et Construction</h3>
+                </div>
+                <div class="form-section">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label for="YearBuilt" class="form-label">Année de construction</label>
+                            <input type="number" class="form-control" id="YearBuilt" name="YearBuilt"
+                                [(ngModel)]="appInfo.YearBuilt" min="1800" max="2024">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="YearRemodAdd" class="form-label">Année de rénovation</label>
+                            <input type="number" class="form-control" id="YearRemodAdd" name="YearRemodAdd"
+                                [(ngModel)]="appInfo.YearRemodAdd" min="1800" max="2024">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="RoofStyle" class="form-label">Style de toit</label>
+                            <input type="number" class="form-control" id="RoofStyle" name="RoofStyle"
+                                [(ngModel)]="appInfo.RoofStyle">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="RoofMatl" class="form-label">Matériau du toit</label>
+                            <input type="number" class="form-control" id="RoofMatl" name="RoofMatl"
+                                [(ngModel)]="appInfo.RoofMatl">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="Exterior1st" class="form-label">Revêtement extérieur 1</label>
+                            <input type="number" class="form-control" id="Exterior1st" name="Exterior1st"
+                                [(ngModel)]="appInfo.Exterior1st">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="Exterior2nd" class="form-label">Revêtement extérieur 2</label>
+                            <input type="number" class="form-control" id="Exterior2nd" name="Exterior2nd"
+                                [(ngModel)]="appInfo.Exterior2nd">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="MasVnrType" class="form-label">Type de placage maçonnerie</label>
+                            <input type="number" class="form-control" id="MasVnrType" name="MasVnrType"
+                                [(ngModel)]="appInfo.MasVnrType">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="MasVnrArea" class="form-label">Surface placage maçonnerie</label>
+                            <input type="number" class="form-control" id="MasVnrArea" name="MasVnrArea"
+                                [(ngModel)]="appInfo.MasVnrArea">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="ExterQual" class="form-label">Qualité extérieure</label>
+                            <input type="number" class="form-control" id="ExterQual" name="ExterQual"
+                                [(ngModel)]="appInfo.ExterQual">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="ExterCond" class="form-label">Condition extérieure</label>
+                            <input type="number" class="form-control" id="ExterCond" name="ExterCond"
+                                [(ngModel)]="appInfo.ExterCond">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="Foundation" class="form-label">Type de fondation</label>
+                            <input type="number" class="form-control" id="Foundation" name="Foundation"
+                                [(ngModel)]="appInfo.Foundation">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="Condition1" class="form-label">Condition proximité 1</label>
+                            <input type="number" class="form-control" id="Condition1" name="Condition1"
+                                [(ngModel)]="appInfo.Condition1">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="Condition2" class="form-label">Condition proximité 2</label>
+                            <input type="number" class="form-control" id="Condition2" name="Condition2"
+                                [(ngModel)]="appInfo.Condition2">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sous-sol -->
+                <div class="section-header">
+                    <h3><i class="bi bi-house-down"></i> Sous-sol</h3>
+                </div>
+                <div class="form-section">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label for="BsmtQual" class="form-label">Qualité du sous-sol</label>
+                            <input type="number" class="form-control" id="BsmtQual" name="BsmtQual"
+                                [(ngModel)]="appInfo.BsmtQual">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="BsmtCond" class="form-label">Condition du sous-sol</label>
+                            <input type="number" class="form-control" id="BsmtCond" name="BsmtCond"
+                                [(ngModel)]="appInfo.BsmtCond">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="BsmtExposure" class="form-label">Exposition du sous-sol</label>
+                            <input type="number" class="form-control" id="BsmtExposure" name="BsmtExposure"
+                                [(ngModel)]="appInfo.BsmtExposure">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="BsmtFinType1" class="form-label">Type finition sous-sol 1</label>
+                            <input type="number" class="form-control" id="BsmtFinType1" name="BsmtFinType1"
+                                [(ngModel)]="appInfo.BsmtFinType1">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="BsmtFinSF1" class="form-label">Surface finie sous-sol 1</label>
+                            <input type="number" class="form-control" id="BsmtFinSF1" name="BsmtFinSF1"
+                                [(ngModel)]="appInfo.BsmtFinSF1">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="BsmtFinType2" class="form-label">Type finition sous-sol 2</label>
+                            <input type="number" class="form-control" id="BsmtFinType2" name="BsmtFinType2"
+                                [(ngModel)]="appInfo.BsmtFinType2">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="BsmtFinSF2" class="form-label">Surface finie sous-sol 2</label>
+                            <input type="number" class="form-control" id="BsmtFinSF2" name="BsmtFinSF2"
+                                [(ngModel)]="appInfo.BsmtFinSF2">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="BsmtUnfSF" class="form-label">Surface non finie sous-sol</label>
+                            <input type="number" class="form-control" id="BsmtUnfSF" name="BsmtUnfSF"
+                                [(ngModel)]="appInfo.BsmtUnfSF">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="TotalBsmtSF" class="form-label">Surface totale sous-sol</label>
+                            <input type="number" class="form-control" id="TotalBsmtSF" name="TotalBsmtSF"
+                                [(ngModel)]="appInfo.TotalBsmtSF">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Espaces de vie -->
+                <div class="section-header">
+                    <h3><i class="bi bi-house"></i> Espaces de vie</h3>
+                </div>
+                <div class="form-section">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label for="Heating" class="form-label">Type de chauffage</label>
+                            <input type="number" class="form-control" id="Heating" name="Heating"
+                                [(ngModel)]="appInfo.Heating">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="HeatingQC" class="form-label">Qualité du chauffage</label>
+                            <input type="number" class="form-control" id="HeatingQC" name="HeatingQC"
+                                [(ngModel)]="appInfo.HeatingQC">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="CentralAir" class="form-label">Climatisation centrale</label>
+                            <input type="number" class="form-control" id="CentralAir" name="CentralAir"
+                                [(ngModel)]="appInfo.CentralAir">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="Electrical" class="form-label">Système électrique</label>
+                            <input type="number" class="form-control" id="Electrical" name="Electrical"
+                                [(ngModel)]="appInfo.Electrical">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="LowQualFinSF" class="form-label">Surface finition basse qualité</label>
+                            <input type="number" class="form-control" id="LowQualFinSF" name="LowQualFinSF"
+                                [(ngModel)]="appInfo.LowQualFinSF">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="GrLivArea" class="form-label">Surface habitable hors sol</label>
+                            <input type="number" class="form-control" id="GrLivArea" name="GrLivArea"
+                                [(ngModel)]="appInfo.GrLivArea">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="BsmtFullBath" class="form-label">Salles de bain complètes sous-sol</label>
+                            <input type="number" class="form-control" id="BsmtFullBath" name="BsmtFullBath"
+                                [(ngModel)]="appInfo.BsmtFullBath">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="BsmtHalfBath" class="form-label">Demi salles de bain sous-sol</label>
+                            <input type="number" class="form-control" id="BsmtHalfBath" name="BsmtHalfBath"
+                                [(ngModel)]="appInfo.BsmtHalfBath">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="FullBath" class="form-label">Salles de bain complètes</label>
+                            <input type="number" class="form-control" id="FullBath" name="FullBath"
+                                [(ngModel)]="appInfo.FullBath">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="HalfBath" class="form-label">Demi salles de bain</label>
+                            <input type="number" class="form-control" id="HalfBath" name="HalfBath"
+                                [(ngModel)]="appInfo.HalfBath">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="BedroomAbvGr" class="form-label">Chambres hors sol</label>
+                            <input type="number" class="form-control" id="BedroomAbvGr" name="BedroomAbvGr"
+                                [(ngModel)]="appInfo.BedroomAbvGr">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="KitchenAbvGr" class="form-label">Cuisines hors sol</label>
+                            <input type="number" class="form-control" id="KitchenAbvGr" name="KitchenAbvGr"
+                                [(ngModel)]="appInfo.KitchenAbvGr">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="KitchenQual" class="form-label">Qualité de la cuisine</label>
+                            <input type="number" class="form-control" id="KitchenQual" name="KitchenQual"
+                                [(ngModel)]="appInfo.KitchenQual">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="TotRmsAbvGrd" class="form-label">Total pièces hors sol</label>
+                            <input type="number" class="form-control" id="TotRmsAbvGrd" name="TotRmsAbvGrd"
+                                [(ngModel)]="appInfo.TotRmsAbvGrd">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="Functional" class="form-label">Fonctionnalité</label>
+                            <input type="number" class="form-control" id="Functional" name="Functional"
+                                [(ngModel)]="appInfo.Functional">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="Fireplaces" class="form-label">Nombre de cheminées</label>
+                            <input type="number" class="form-control" id="Fireplaces" name="Fireplaces"
+                                [(ngModel)]="appInfo.Fireplaces">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="FireplaceQu" class="form-label">Qualité des cheminées</label>
+                            <input type="number" class="form-control" id="FireplaceQu" name="FireplaceQu"
+                                [(ngModel)]="appInfo.FireplaceQu">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Garage -->
+                <div class="section-header">
+                    <h3><i class="bi bi-car-front"></i> Garage</h3>
+                </div>
+                <div class="form-section">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label for="GarageType" class="form-label">Type de garage</label>
+                            <input type="number" class="form-control" id="GarageType" name="GarageType"
+                                [(ngModel)]="appInfo.GarageType">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="GarageYrBlt" class="form-label">Année construction garage</label>
+                            <input type="number" class="form-control" id="GarageYrBlt" name="GarageYrBlt"
+                                [(ngModel)]="appInfo.GarageYrBlt" min="1800" max="2024">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="GarageFinish" class="form-label">Finition du garage</label>
+                            <input type="number" class="form-control" id="GarageFinish" name="GarageFinish"
+                                [(ngModel)]="appInfo.GarageFinish">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="GarageCars" class="form-label">Capacité voitures garage</label>
+                            <input type="number" class="form-control" id="GarageCars" name="GarageCars"
+                                [(ngModel)]="appInfo.GarageCars">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="GarageArea" class="form-label">Surface du garage</label>
+                            <input type="number" class="form-control" id="GarageArea" name="GarageArea"
+                                [(ngModel)]="appInfo.GarageArea">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="GarageQual" class="form-label">Qualité du garage</label>
+                            <input type="number" class="form-control" id="GarageQual" name="GarageQual"
+                                [(ngModel)]="appInfo.GarageQual">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="GarageCond" class="form-label">Condition du garage</label>
+                            <input type="number" class="form-control" id="GarageCond" name="GarageCond"
+                                [(ngModel)]="appInfo.GarageCond">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="PavedDrive" class="form-label">Allée pavée</label>
+                            <input type="number" class="form-control" id="PavedDrive" name="PavedDrive"
+                                [(ngModel)]="appInfo.PavedDrive">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Extérieur -->
+                <div class="section-header">
+                    <h3><i class="bi bi-tree"></i> Extérieur</h3>
+                </div>
+                <div class="form-section">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label for="WoodDeckSF" class="form-label">Surface terrasse bois</label>
+                            <input type="number" class="form-control" id="WoodDeckSF" name="WoodDeckSF"
+                                [(ngModel)]="appInfo.WoodDeckSF">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="OpenPorchSF" class="form-label">Surface porche ouvert</label>
+                            <input type="number" class="form-control" id="OpenPorchSF" name="OpenPorchSF"
+                                [(ngModel)]="appInfo.OpenPorchSF">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="EnclosedPorch" class="form-label">Porche fermé</label>
+                            <input type="number" class="form-control" id="EnclosedPorch" name="EnclosedPorch"
+                                [(ngModel)]="appInfo.EnclosedPorch">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="ScreenPorch" class="form-label">Porche grillagé</label>
+                            <input type="number" class="form-control" id="ScreenPorch" name="ScreenPorch"
+                                [(ngModel)]="appInfo.ScreenPorch">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="PoolArea" class="form-label">Surface piscine</label>
+                            <input type="number" class="form-control" id="PoolArea" name="PoolArea"
+                                [(ngModel)]="appInfo.PoolArea">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="PoolQC" class="form-label">Qualité piscine</label>
+                            <input type="number" class="form-control" id="PoolQC" name="PoolQC"
+                                [(ngModel)]="appInfo.PoolQC">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="Fence" class="form-label">Clôture</label>
+                            <input type="number" class="form-control" id="Fence" name="Fence"
+                                [(ngModel)]="appInfo.Fence">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="MiscFeature" class="form-label">Caractéristique diverse</label>
+                            <input type="number" class="form-control" id="MiscFeature" name="MiscFeature"
+                                [(ngModel)]="appInfo.MiscFeature">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="MiscVal" class="form-label">Valeur diverse</label>
+                            <input type="number" class="form-control" id="MiscVal" name="MiscVal"
+                                [(ngModel)]="appInfo.MiscVal">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vente -->
+                <div class="section-header">
+                    <h3><i class="bi bi-calendar-check"></i> Informations de Vente</h3>
+                </div>
+                <div class="form-section">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label for="MoSold" class="form-label">Mois de vente (1-12)</label>
+                            <input type="number" class="form-control" id="MoSold" name="MoSold"
+                                [(ngModel)]="appInfo.MoSold" min="1" max="12">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="YrSold" class="form-label">Année de vente</label>
+                            <input type="number" class="form-control" id="YrSold" name="YrSold"
+                                [(ngModel)]="appInfo.YrSold" min="2000" max="2024">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="SaleType" class="form-label">Type de vente</label>
+                            <input type="number" class="form-control" id="SaleType" name="SaleType"
+                                [(ngModel)]="appInfo.SaleType">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="SaleCondition" class="form-label">Condition de vente</label>
+                            <input type="number" class="form-control" id="SaleCondition" name="SaleCondition"
+                                [(ngModel)]="appInfo.SaleCondition">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bouton de soumission -->
+                <div class="text-center mt-4 ">
+                    <button type="submit" class="btn btn-primary btn-lg px-5" (click)="estimerPrix()">
+                        <i class="bi bi-calculator"></i>
+                        Estimer le Prix
+                    </button>
+                    <div class="loading mt-3" *ngIf="this.chargementbutton">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Chargement...</span>
+                        </div>
+                        <p class="mt-2">Calcul en cours...</p>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Section des résultats -->
+            <div class="result-section mt-3">
+                <div class="card border-success">
+                    <div class="card-header bg-success text-white">
+                        <h4 class="mb-0"><i class="bi bi-check-circle"></i> Estimation du Prix</h4>
+                    </div>
+                    <div class="card-body text-center">
+                        <div class="price-display" id="priceResult">{{this.prediction.prediction}} DH</div>
+                        <p class="text-muted mt-2">Cette estimation est basée sur les caractéristiques fournies</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section des erreurs -->
+            <div class="alert alert-danger mt-3" id="errorAlert" *ngIf="messageErrorExiste">
+                <h5><i class="bi bi-exclamation-triangle"></i> Erreur</h5>
+                <p id="errorMessage">{{this.errorMessage}}</p>
+            </div>
+        </div>
+    </div>
+</div>
