@@ -1,4 +1,4 @@
-# Application web intelligente qui estime le prix d'unappartement
+# Application web intelligente qui estime le prix d'une appartement
 Ce projet est une application web complète et sécurisée qui permet aux utilisateurs d'estimer le prix d'un appartement en fonction de ses caractéristiques. Il s'agit d'une solution full-stack qui intègre un modèle de machine learning pour des prédictions précises.
 Fonctionnalités Clés ✨
 Estimation des prix : Obtenez une estimation précise du prix d'un appartement en saisissant ses caractéristiques.
